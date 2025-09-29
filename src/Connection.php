@@ -22,6 +22,7 @@ use function trim;
 
 class Connection extends \Doctrine\DBAL\Connection
 {
+    private int $transactionIsolationLevel = 0;
     /**
      * {@inheritDoc}
      */
@@ -61,7 +62,7 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function setTransactionIsolation($level): int
     {
-        throw Exception::notSupported(__METHOD__);
+        return $this->transactionIsolationLevel = (int) $level;
     }
 
     /**
@@ -69,7 +70,7 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function getTransactionIsolation(): int
     {
-        throw Exception::notSupported(__METHOD__);
+        return $this->transactionIsolationLevel;
     }
 
     /**
@@ -77,7 +78,7 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function getTransactionNestingLevel(): int
     {
-        throw Exception::notSupported(__METHOD__);
+        return 0;
     }
 
     /**
@@ -85,7 +86,7 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function transactional(\Closure $func): void
     {
-        throw Exception::notSupported(__METHOD__);
+        $func();
     }
 
     /**
@@ -93,7 +94,7 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function setNestTransactionsWithSavepoints($nestTransactionsWithSavepoints): void
     {
-        throw Exception::notSupported(__METHOD__);
+        // no-op
     }
 
     /**
@@ -101,7 +102,7 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function getNestTransactionsWithSavepoints(): bool
     {
-        throw Exception::notSupported(__METHOD__);
+        return false;
     }
 
     /**
@@ -109,7 +110,7 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function beginTransaction(): bool
     {
-        throw Exception::notSupported(__METHOD__);
+        return true;
     }
 
     /**
@@ -117,7 +118,7 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function commit(): bool
     {
-        throw Exception::notSupported(__METHOD__);
+        return true;
     }
 
     /**
@@ -125,7 +126,7 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function rollBack(): bool
     {
-        throw Exception::notSupported(__METHOD__);
+        return true;
     }
 
     /**
@@ -133,7 +134,7 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function createSavepoint($savepoint): void
     {
-        throw Exception::notSupported(__METHOD__);
+        // no-op
     }
 
     /**
@@ -141,7 +142,7 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function releaseSavepoint($savepoint): void
     {
-        throw Exception::notSupported(__METHOD__);
+        // no-op
     }
 
     /**
@@ -149,7 +150,7 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function rollbackSavepoint($savepoint): void
     {
-        throw Exception::notSupported(__METHOD__);
+        // no-op
     }
 
     /**
@@ -157,7 +158,7 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function setRollbackOnly(): void
     {
-        throw Exception::notSupported(__METHOD__);
+        // no-op
     }
 
     /**
@@ -165,6 +166,6 @@ class Connection extends \Doctrine\DBAL\Connection
      */
     public function isRollbackOnly(): bool
     {
-        throw Exception::notSupported(__METHOD__);
+        return true;
     }
 }

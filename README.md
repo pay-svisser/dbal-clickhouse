@@ -1,3 +1,13 @@
+# PAY. Addition to FriendsOfDoctrine/Clickhouse
+
+Doctrine is a feature-rich Object Relational Mapper that supports different database backends. Much of Doctrine's
+functionality requires the underlying database to support transactions, which ClickHouse does not. The implementation
+of the clickhouse driver by FriendsOfDoctrine throws an exception whenever such functionality is used; however,
+as we are only using Clickhouse as a search index we can proceed without this transactional support.
+
+To enable this, we have forked [the repository](https://github.com/FriendsOfDoctrine/dbal-clickhouse#) and removed the 
+related code that forces an exception in transaction contexts. The original readme continues below.
+
 # Doctrine DBAL ClickHouse Driver
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/FriendsOfDoctrine/dbal-clickhouse.svg?style=flat-square)](https://packagist.org/packages/FriendsOfDoctrine/dbal-clickhouse)
