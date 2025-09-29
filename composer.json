@@ -1,5 +1,5 @@
 {
-    "name": "friendsofdoctrine/dbal-clickhouse",
+    "name": "paynl/dbal-clickhouse",
     "type": "library",
     "description": "Doctrine DBAL driver for ClickHouse",
     "keywords": [
@@ -22,6 +22,10 @@
         {
             "name": "Sanikovich Aliaksei",
             "email": "asanikovich@gmail.com"
+        },
+        {
+            "name": "Stefan Visser",
+            "email": "s.visser@pay.nl"
         }
     ],
     "require": {
