@@ -39,7 +39,6 @@ use FOD\DBALClickHouse\Types\NumericalClickHouseType;
 use FOD\DBALClickHouse\Types\StringableClickHouseType;
 use FOD\DBALClickHouse\Types\UnsignedNumericalClickHouseType;
 
-use function addslashes;
 use function array_filter;
 use function array_key_exists;
 use function array_keys;
@@ -1306,7 +1305,7 @@ class ClickHousePlatform extends AbstractPlatform
      */
     public function quoteStringLiteral($str): string
     {
-        return parent::quoteStringLiteral(addslashes($str));
+        return parent::quoteStringLiteral($str);
     }
 
     /**
@@ -1314,7 +1313,7 @@ class ClickHousePlatform extends AbstractPlatform
      */
     public function quoteSingleIdentifier($str): string
     {
-        return parent::quoteSingleIdentifier(addslashes($str));
+        return parent::quoteSingleIdentifier($str);
     }
 
     /**
